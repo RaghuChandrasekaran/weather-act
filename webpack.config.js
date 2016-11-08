@@ -1,5 +1,8 @@
 'use strict'
 const webpack = require('webpack');
+const path = require("path");
+const srcPath = path.resolve(__dirname, "app");
+const distPath = path.resolve(__dirname, "dist");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: `${__dirname}/app/index.html`,
@@ -8,12 +11,11 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
-    context: `${__dirname}/app`,
     entry: {
-        app: './index.js',
+        app: `${srcPath}/index.js`,
     },
     output: {
-        path: `${__dirname}/dist`,
+        path: distPath,
         filename: "[name].bundle.js"
     },
     module: {

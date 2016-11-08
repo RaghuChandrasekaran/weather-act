@@ -6,7 +6,8 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "webpack-dev-server",
-    "start:prod": "webpack -p"
+    "start:prod": "webpack -p",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [
     "Weather",
@@ -25,6 +26,7 @@
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
     "babel-preset-react": "^6.16.0",
+    "gh-pages": "^0.11.0",
     "html-webpack-plugin": "^2.24.1",
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-server": "^2.1.0-beta.10"
