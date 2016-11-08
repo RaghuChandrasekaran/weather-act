@@ -14,6 +14,6 @@ This app was developed as part of [React.js Fundamentals Curriculum](https://git
   * Detail
 
 #### Containers:
-  * Main
+  * App Container
   * Forecast Container
   * Detail Container
