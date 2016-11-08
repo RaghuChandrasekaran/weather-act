@@ -1,0 +1,32 @@
+{
+  "name": "weather-act",
+  "version": "1.0.0",
+  "description": "Weather app using react",
+  "main": "index.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "webpack-dev-server",
+    "start:prod": "webpack -p"
+  },
+  "keywords": [
+    "Weather",
+    "react"
+  ],
+  "author": "raghu <raghu.9208@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.15.2",
+    "if-env": "^1.0.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^4.0.0-alpha.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-react": "^6.16.0",
+    "html-webpack-plugin": "^2.24.1",
+    "webpack": "^2.1.0-beta.25",
+    "webpack-dev-server": "^2.1.0-beta.10"
+  }
+}
