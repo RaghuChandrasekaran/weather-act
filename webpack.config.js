@@ -11,6 +11,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
+    devtool: 'source-map',
     entry: {
         app: `${srcPath}/index.js`,
     },
@@ -26,6 +27,10 @@ module.exports = {
                     loader: "babel-loader",
                     options: { presets: ["react"] }
                 }],
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
             }
         ],
     },
