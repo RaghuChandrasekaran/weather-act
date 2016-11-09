@@ -5,17 +5,18 @@ var Match = ReactRouter.Match;
 var Miss = ReactRouter.Miss;
 var Link = ReactRouter.Link;
 var Home = require('../components/Home');
-var ForeCastContainer = require('../containers/ForeCastContainer');
+var Header = require('../components/Header');
 var NoMatch = require('../components/NoMatch');
 
 function AppContainer() {
     return (
         <HashRouter>
-            <div>
-                <Link to="/forecast">forecast</Link>
-                <Match exactly pattern="/" component={Home} />
-                <Match exactly pattern="/forecast" component={ForeCastContainer} />
-                <Miss component={NoMatch} />
+            <div className="mdl-layout mdl-js-layout">
+                <Header/>
+                <main className="mdl-layout__content fullView">
+                    <Match exactly pattern="/" component={Home} />
+                    <Miss component={NoMatch} />
+                </main>
             </div>
         </HashRouter>
     );
