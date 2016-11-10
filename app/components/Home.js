@@ -1,11 +1,11 @@
 var React = require('react');
-var ForeCastContainer = require('../containers/ForeCastContainer');
+var CityPromptContainer = require('../containers/CityPromptContainer');
 
 var Home = React.createClass({
     render: function () {
         return (
             <div className="fullView center">
-                <ForeCastContainer />
+                <CityPromptContainer />
             </div>
         )
     }

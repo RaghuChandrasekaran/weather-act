@@ -1,10 +1,11 @@
 var React = require('react');
-var ForeCast = require('../components/ForeCast');
+var ForeCast = require('../components/CityPrompt');
+var apiHelper = require('../utils/apiHelper');
 
-var ForeCastContainer = React.createClass({
-    getDefaultProps:function(){
+var CityPromptContainer = React.createClass({
+    getDefaultProps: function () {
         return {
-            'prompt':'form'
+            'promptType': 'form'
         }
     },
     getInitialState: function () {
@@ -20,14 +21,16 @@ var ForeCastContainer = React.createClass({
     handleSubmitCity: function (e) {
         e.preventDefault();
         var cityName = this.state.cityName;
+        apiHelper.getForecast(cityName);
+        apiHelper.getCurrentWeather(cityName);
         this.setState({
             'cityName': ''
         });
     },
     render: function () {
         return (
-            <ForeCast 
-                prompt={this.props.prompt}
+            <ForeCast
+                promptType={this.props.promptType}
                 onSubmitCity={this.handleSubmitCity}
                 onUpdateCity={this.handleUpdateCity}
                 cityName={this.state.cityName}
@@ -36,4 +39,4 @@ var ForeCastContainer = React.createClass({
     }
 });
 
-module.exports = ForeCastContainer;
+module.exports = CityPromptContainer;
