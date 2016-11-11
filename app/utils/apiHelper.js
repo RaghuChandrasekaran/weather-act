@@ -10,16 +10,16 @@ var defaultQueryParams = {
 };
 
 function formQueryString(queryParams) {
-    let queryString = [];
+    var queryString = [];
     for (var prop in queryParams) {
-        queryString.push(`${prop}=${queryParams[prop]}`);
+        queryString.push(prop + '=' + queryParams[prop]);
     }
     return queryString.join('&');
 }
 
 function prepareUrl(duration, cityName) {
     defaultQueryParams['q'] = cityName;
-    return `${URL}${duration}?${formQueryString(defaultQueryParams)}`;
+    return URL + duration + '?' + formQueryString(defaultQueryParams);
 }
 
 function getForecast(cityName) {
