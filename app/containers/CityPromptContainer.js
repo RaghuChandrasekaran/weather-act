@@ -1,8 +1,15 @@
 var React = require('react');
+var Proptypes = React.PropTypes;
 var ForeCast = require('../components/CityPrompt');
 var apiHelper = require('../utils/apiHelper');
 
 var CityPromptContainer = React.createClass({
+    contextTypes: {
+        router: React.PropTypes.object.isRequired
+    },
+    propTypes: {
+        'promptType': Proptypes.string
+    },
     getDefaultProps: function () {
         return {
             'promptType': 'form'
@@ -21,11 +28,10 @@ var CityPromptContainer = React.createClass({
     handleSubmitCity: function (e) {
         e.preventDefault();
         var cityName = this.state.cityName;
-        apiHelper.getForecast(cityName);
-        apiHelper.getCurrentWeather(cityName);
         this.setState({
             'cityName': ''
         });
+        this.context.router.transitionTo('/forecast/' + cityName);
     },
     render: function () {
         return (

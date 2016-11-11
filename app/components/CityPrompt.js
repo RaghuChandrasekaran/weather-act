@@ -1,4 +1,5 @@
 var React = require('react');
+var Proptypes = React.PropTypes;
 
 function NavPrompt(props) {
     return (
@@ -47,5 +48,12 @@ function CityPrompt(props) {
         return <FormPrompt {...props} />;
     }
 }
+
+CityPrompt.propTypes = {
+    promptType: Proptypes.string.isRequired,
+    cityName: Proptypes.string.isRequired,
+    onSubmitCity: Proptypes.func.isRequired,
+    onUpdateCity: Proptypes.func.isRequired
+};
 
 module.exports = CityPrompt;
