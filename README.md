@@ -8,12 +8,15 @@ This app was developed as part of [React.js Fundamentals Curriculum](https://git
 #### Components:
   * Loading
   * Home
-  * GetCity
+  * CityPrompt
   * Forecast
   * Day
   * Detail
+  * Header
+  * No Match
 
 #### Containers:
   * App Container
+  * CityPrompt Container
   * Forecast Container
   * Detail Container
