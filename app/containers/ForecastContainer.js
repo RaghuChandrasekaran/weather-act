@@ -1,27 +1,49 @@
 var React = require('react');
 var Loading = require('../components/Loading');
 var Forecast = require('../components/Forecast');
+var apiHelper = require('../utils/apiHelper');
 
 var ForecastContainer = React.createClass({
+    contextTypes: {
+        router: React.PropTypes.object.isRequired
+    },
     getInitialState: function () {
         return {
             isLoading: true
         }
     },
-    componentDidMount: function () {
-        console.log("mounted");
-        this.asyncDemo = setInterval(function () {
-            this.setState({
-                isLoading: false
-            });
-        }.bind(this), 3000);
+    getWeather: function (cityName) {
+        apiHelper.getForecast(cityName)
+            .then(function (forecast) {
+                this.setState({
+                    isLoading: false,
+                    forecast: forecast
+                });
+            }.bind(this));
     },
-    componentWillUnmount: function () {
-        clearInterval(this.asyncDemo);
+    componentDidMount: function () {
+        this.getWeather(this.props.params.cityName);
+    },
+    componentDidUpdate: function (prevProps) {
+        if (prevProps.params.cityName !== this.props.params.cityName) {
+            this.setState({
+                isLoading: true
+            });
+            this.getWeather(this.props.params.cityName);
+        }
+    },
+    onClick: function (weather) {
+        this.context.router.transitionTo({
+            pathname: '/detail/' + this.props.params.cityName,
+            state: {
+                weather: weather
+            }
+        });
     },
     render: function () {
         return (
-            this.state.isLoading ? <Loading /> : <Forecast cityName={this.props.params.cityName} />
+            this.state.isLoading ? <Loading /> : <Forecast cityName={this.props.params.cityName} forecast={this.state.forecast}
+                handleClick={this.onClick} />
         )
     }
 });
