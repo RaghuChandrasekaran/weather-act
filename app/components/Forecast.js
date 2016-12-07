@@ -3,7 +3,9 @@ var Day = require('./Day');
 
 var Forecast = React.createClass({
     render: function () {
-        let days = this.props.forecast.list.map((eachDay) => <Day key={eachDay.dt} data={eachDay} handleClick={this.props.handleClick} />);
+        var days = this.props.forecast.list.map(function (eachDay) {
+            return <Day key={eachDay.dt} data={eachDay} handleClick={this.props.handleClick} />
+        });
         return (
             <div className="fullView">
                 <div className="center" style={{ flexDirection: 'column' }}>

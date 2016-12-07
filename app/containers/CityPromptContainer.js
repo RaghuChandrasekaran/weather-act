@@ -32,7 +32,7 @@ var CityPromptContainer = React.createClass({
         this.setState({
             'cityName': ''
         });
-        let newRoute = '/forecast/' + cityName;
+        var newRoute = '/forecast/' + cityName;
         if (this.context.history.location.pathname !== newRoute) {
             this.context.router.transitionTo(newRoute);
         }

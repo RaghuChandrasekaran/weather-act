@@ -6,12 +6,12 @@ var Day = React.createClass({
         this.props.handleClick(this.props.data);
     },
     render: function () {
-        let date = helper.getDate(this.props.data.dt);
-        let iconSrc = "http://openweathermap.org/img/w/" + this.props.data.weather[0].icon + ".png";
+        var dateTime = helper.getDate(this.props.data.dt);
+        var iconSrc = "http://openweathermap.org/img/w/" + this.props.data.weather[0].icon + ".png";
         return (
             <div className="mdl-cell mdl-cell--2-col center" style={{ flexDirection: 'column' }} onClick={this.onClick}>
                 <img src={iconSrc} />
-                <h4>{date}</h4>
+                <h4>{dateTime}</h4>
             </div>
         )
     }
