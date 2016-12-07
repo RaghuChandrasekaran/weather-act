@@ -1,11 +1,12 @@
 var React = require('react');
 var Proptypes = React.PropTypes;
-var ForeCast = require('../components/CityPrompt');
+var CityPrompt = require('../components/CityPrompt');
 var apiHelper = require('../utils/apiHelper');
 
 var CityPromptContainer = React.createClass({
     contextTypes: {
-        router: React.PropTypes.object.isRequired
+        router: React.PropTypes.object.isRequired,
+        history: React.PropTypes.object.isRequired
     },
     propTypes: {
         'promptType': Proptypes.string
@@ -31,11 +32,14 @@ var CityPromptContainer = React.createClass({
         this.setState({
             'cityName': ''
         });
-        this.context.router.transitionTo('/forecast/' + cityName);
+        let newRoute = '/forecast/' + cityName;
+        if (this.context.history.location.pathname !== newRoute) {
+            this.context.router.transitionTo(newRoute);
+        }
     },
     render: function () {
         return (
-            <ForeCast
+            <CityPrompt
                 promptType={this.props.promptType}
                 onSubmitCity={this.handleSubmitCity}
                 onUpdateCity={this.handleUpdateCity}
