@@ -1,39 +1,20 @@
 'use strict';
 const axios = require('axios');
-const API_KEY = '0bb2ad3f60f11448632009db948b1933';
-var URL = 'http://api.openweathermap.org/data/2.5/';
-var defaultQueryParams = {
-    q: 'cityName',
-    type: 'accurate',
-    APPID: API_KEY,
-    cnt: 5
-};
-
-function formQueryString(queryParams) {
-    var queryString = [];
-    for (var prop in queryParams) {
-        queryString.push(prop + '=' + queryParams[prop]);
-    }
-    return queryString.join('&');
-}
-
-function prepareUrl(duration, cityName) {
-    defaultQueryParams['q'] = cityName;
-    return URL + duration + '?' + formQueryString(defaultQueryParams);
-}
+const URL = 'https://weatheract.herokuapp.com/';
 
 function getForecast(cityName) {
-    var url = prepareUrl('forecast/daily', cityName);
-    return axios.get(url)
-        .then(function (res) {
-            return res.data;
-        });
+    var url = URL + 'forecast/' + cityName;
+    return makeRequest(url);
 }
 
 function getCurrentWeather(cityName) {
-    var url = prepareUrl('weather', cityName);
+    var url = URL + 'current/' + cityName;
+    return makeRequest(url);
+}
+
+function makeRequest(url) {
     return axios.get(url)
-        .then(function (res) {
+        .then(function(res) {
             return res.data;
         });
 }

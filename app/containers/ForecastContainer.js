@@ -7,24 +7,28 @@ var ForecastContainer = React.createClass({
     contextTypes: {
         router: React.PropTypes.object.isRequired
     },
-    getInitialState: function () {
+    getInitialState: function() {
         return {
             isLoading: true
         }
     },
-    getWeather: function (cityName) {
+    getWeather: function(cityName) {
         apiHelper.getForecast(cityName)
-            .then(function (forecast) {
+            .then(function(forecast) {
                 this.setState({
                     isLoading: false,
                     forecast: forecast
                 });
+            }.bind(this))
+            .catch(function(err) {
+                console.error(err);
+                this.context.router.transitionTo('/');
             }.bind(this));
     },
-    componentDidMount: function () {
+    componentDidMount: function() {
         this.getWeather(this.props.params.cityName);
     },
-    componentDidUpdate: function (prevProps) {
+    componentDidUpdate: function(prevProps) {
         if (prevProps.params.cityName !== this.props.params.cityName) {
             this.setState({
                 isLoading: true
@@ -32,7 +36,7 @@ var ForecastContainer = React.createClass({
             this.getWeather(this.props.params.cityName);
         }
     },
-    onClick: function (weather) {
+    onClick: function(weather) {
         this.context.router.transitionTo({
             pathname: '/detail/' + this.props.params.cityName,
             state: {
@@ -40,7 +44,7 @@ var ForecastContainer = React.createClass({
             }
         });
     },
-    render: function () {
+    render: function() {
         return (
             this.state.isLoading ? <Loading /> : <Forecast cityName={this.props.params.cityName} forecast={this.state.forecast}
                 handleClick={this.onClick} />
