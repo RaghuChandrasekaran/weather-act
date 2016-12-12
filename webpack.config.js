@@ -31,6 +31,14 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"],
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                use: ["url-loader"],
+            },
+            {
+                test: /\.json$/,
+                use: ["json-loader"],
             }
         ],
     },

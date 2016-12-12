@@ -1,4 +1,5 @@
 var React = require('react');
+var Icon = require('./Icons');
 var helper = require('../utils/helper');
 
 var Day = React.createClass({
@@ -7,10 +8,9 @@ var Day = React.createClass({
     },
     render: function () {
         var dateTime = helper.getDate(this.props.data.dt);
-        var iconSrc = "http://openweathermap.org/img/w/" + this.props.data.weather[0].icon + ".png";
         return (
-            <div className="mdl-cell mdl-cell--2-col center" style={{ flexDirection: 'column' }} onClick={this.onClick}>
-                <img src={iconSrc} />
+            <div className="mdl-cell mdl-cell--3-col center" style={{ flexDirection: 'column' }} onClick={this.onClick}>
+                <Icon iconId={this.props.data.weather[0].id} />
                 <h4>{dateTime}</h4>
             </div>
         )

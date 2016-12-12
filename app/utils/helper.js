@@ -1,3 +1,4 @@
+var weatherIcons = require('./icons.json');
 var daysMap = {
     "0": "Sunday",
     "1": "Monday",
@@ -34,7 +35,18 @@ function getDate(unixTimeStamp) {
     return day + ', ' + month;
 }
 
+function getIconName(code) {
+    var prefix = 'wi wi-';
+    var icon = weatherIcons[code].icon;
+    if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
+        icon = 'day-' + icon;
+    }
+    icon = prefix + icon;
+    return icon;
+}
+
 module.exports = {
     convertTemp: convertTemp,
-    getDate: getDate
+    getDate: getDate,
+    getIconName: getIconName
 }

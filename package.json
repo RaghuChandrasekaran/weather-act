@@ -18,9 +18,11 @@
   "dependencies": {
     "axios": "^0.15.2",
     "if-env": "^1.0.0",
+    "json-loader": "^0.5.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-router": "^4.0.0-alpha.5"
+    "react-router": "^4.0.0-alpha.5",
+    "url-loader": "^0.5.7"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
