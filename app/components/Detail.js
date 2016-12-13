@@ -1,19 +1,40 @@
 var React = require('react');
 var Day = require('./Day');
+var Temperature = require('./Temperature');
 var helper = require('../utils/helper');
 
 var Detail = React.createClass({
     render: function () {
         return (
-            <div className="fullView center" style={{ flexDirection: 'column' }}>
+            <div className="center">
                 <Day data={this.props.weather} />
-                <div>
-                    <p>{this.props.cityName}</p>
-                    <p>{this.props.weather.weather[0].description}</p>
-                    <p>min temp:{helper.convertTemp(this.props.weather.temp.min)}</p>
-                    <p>max temp:{helper.convertTemp(this.props.weather.temp.max)}</p>
-                    <p>humidity:{this.props.weather.humidity}</p>
-                </div>
+                <ul className="demo-list-item mdl-list">
+                    <li className="mdl-list__item">
+                        <span className="mdl-list__item-primary-content">
+                            {this.props.cityName}
+                        </span>
+                    </li>
+                    <li className="mdl-list__item">
+                        <span className="mdl-list__item-primary-content">
+                            {this.props.weather.weather[0].description}
+                        </span>
+                    </li>
+                    <li className="mdl-list__item">
+                        <span className="mdl-list__item-primary-content">
+                            Min Temp : <Temperature temp={this.props.weather.temp.min} />
+                        </span>
+                    </li>
+                    <li className="mdl-list__item">
+                        <span className="mdl-list__item-primary-content">
+                            Max Temp : <Temperature temp={this.props.weather.temp.max} />
+                        </span>
+                    </li>
+                    <li className="mdl-list__item">
+                        <span className="mdl-list__item-primary-content">
+                            Humidity : {this.props.weather.humidity}%
+                             </span>
+                    </li>
+                </ul>
             </div>
         )
     }
