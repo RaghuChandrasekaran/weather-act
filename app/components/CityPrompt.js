@@ -5,9 +5,6 @@ function NavPrompt(props) {
     return (
         <form onSubmit={props.onSubmitCity}>
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="cityInput">
-                    <i className="material-icons">search</i>
-                </label>
                 <div className="mdl-textfield__expandable-holder">
                     <input
                         className="mdl-textfield__input" type="text"
@@ -16,6 +13,9 @@ function NavPrompt(props) {
                         onChange={props.onUpdateCity}
                         />
                 </div>
+                <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="cityInput">
+                    <i className="material-icons">search</i>
+                </label>
             </div>
         </form>
     );
