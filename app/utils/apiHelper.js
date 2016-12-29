@@ -14,7 +14,7 @@ function getCurrentWeather(cityName) {
 
 function makeRequest(url) {
     return axios.get(url)
-        .then(function(res) {
+        .then(function (res) {
             return res.data;
         });
 }
