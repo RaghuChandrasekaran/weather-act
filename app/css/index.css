@@ -26,6 +26,21 @@ html,body,.app {
     flex-direction: column;
 }
 
+.brand{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+
+.hidden{
+  display: none;
+}
+
+.show{
+  display: flex
+}
+
 .spinner {
   margin: 100px auto;
   width: 50px;
