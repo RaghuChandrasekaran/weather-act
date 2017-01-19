@@ -6,8 +6,9 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "webpack-dev-server",
-    "start:prod": "webpack",
-    "deploy": "webpack -p && gh-pages -d dist"
+    "start:prod": "webpack -p",
+    "deploy": "webpack -p && gh-pages -d dist",
+    "analyze": "webpack -p --json | webpack-bundle-size-analyzer"
   },
   "keywords": [
     "Weather",
@@ -21,18 +22,19 @@
     "json-loader": "^0.5.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-router": "^4.0.0-alpha.5",
-    "url-loader": "^0.5.7"
+    "react-router": "^4.0.0-alpha.6"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
     "babel-preset-react": "^6.16.0",
-    "css-loader": "^0.25.0",
-    "gh-pages": "^0.11.0",
+    "css-loader": "^0.26.1",
+    "file-loader": "^0.9.0",
+    "gh-pages": "^0.12.0",
     "html-webpack-plugin": "^2.24.1",
     "style-loader": "^0.13.1",
-    "webpack": "^2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.10"
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
   }
 }
