@@ -8,7 +8,7 @@ function NavPrompt(props) {
                 <div className="mdl-textfield__expandable-holder">
                     <input
                         className="mdl-textfield__input" type="text"
-                        id="cityInput"
+                        id="cityInputNav"
                         value={props.cityName}
                         onChange={props.onUpdateCity}
                     />
@@ -27,7 +27,7 @@ function FormPrompt(props) {
             <div className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
                 <input type="text"
                     className="mdl-textfield__input"
-                    id="cityInput"
+                    id="cityInputForm"
                     autoFocus
                     value={props.cityName}
                     onChange={props.onUpdateCity}
