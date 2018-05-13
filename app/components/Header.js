@@ -3,18 +3,18 @@ var CityPromptContainer = require('../containers/CityPromptContainer');
 
 var Header = React.createClass({
     contextTypes: {
-        history: React.PropTypes.object.isRequired
+        router: React.PropTypes.object.isRequired
     },
     handleGoBack: function () {
-        this.context.history.goBack();
+        this.context.router.history.goBack();
     },
     handleGoForward: function () {
-        this.context.history.goForward();
+        this.context.router.history.goForward();
     },
     render: function () {
         var buttonClassNames = "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon ";
-        var goBackClass = this.context.history.canGo(-1) ? buttonClassNames + "show" : buttonClassNames + "hidden";
-        var goForwardClass = this.context.history.canGo(1) ? buttonClassNames + "show" : buttonClassNames + "hidden";
+        var goBackClass = this.context.router.history.canGo(-1) ? buttonClassNames + "show" : buttonClassNames + "hidden";
+        var goForwardClass = this.context.router.history.canGo(1) ? buttonClassNames + "show" : buttonClassNames + "hidden";
         return (
             <header className="mdl-layout__header">
                 <div className="mdl-layout__header-row">

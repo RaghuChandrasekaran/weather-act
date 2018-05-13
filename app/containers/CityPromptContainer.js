@@ -5,8 +5,7 @@ var apiHelper = require('../utils/apiHelper');
 
 var CityPromptContainer = React.createClass({
     contextTypes: {
-        router: React.PropTypes.object.isRequired,
-        history: React.PropTypes.object.isRequired
+        router: React.PropTypes.object.isRequired
     },
     propTypes: {
         'promptType': Proptypes.string
@@ -33,8 +32,8 @@ var CityPromptContainer = React.createClass({
             'cityName': ''
         });
         var newRoute = '/forecast/' + cityName;
-        if (this.context.history.location.pathname !== newRoute) {
-            this.context.router.transitionTo(newRoute);
+        if (this.context.router.history.location.pathname !== newRoute) {
+            this.context.router.history.push(newRoute);
         }
     },
     render: function () {
@@ -44,7 +43,7 @@ var CityPromptContainer = React.createClass({
                 onSubmitCity={this.handleSubmitCity}
                 onUpdateCity={this.handleUpdateCity}
                 cityName={this.state.cityName}
-                />
+            />
         )
     }
 });

@@ -1,11 +1,11 @@
 var React = require('react');
 
-var Home = React.createClass({
-    render: function () {
-        return (
-            <div> 404 </div>
-        )
-    }
-});
+const NoMatch = ({ location }) => (
+    <div>
+        <h3>
+            No match for <code>{location.pathname}</code>
+        </h3>
+    </div>
+);
 
-module.exports = Home;
+module.exports = NoMatch;

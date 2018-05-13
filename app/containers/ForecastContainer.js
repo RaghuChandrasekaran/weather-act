@@ -22,23 +22,23 @@ var ForecastContainer = React.createClass({
             }.bind(this))
             .catch(function (err) {
                 console.error(err);
-                this.context.router.transitionTo('/');
+                this.context.router.history.push('/');
             }.bind(this));
     },
     componentDidMount: function () {
-        this.getWeather(this.props.params.cityName);
+        this.getWeather(this.props.match.params.cityName);
     },
     componentDidUpdate: function (prevProps) {
-        if (prevProps.params.cityName !== this.props.params.cityName) {
+        if (prevProps.match.params.cityName !== this.props.match.params.cityName) {
             this.setState({
                 isLoading: true
             });
-            this.getWeather(this.props.params.cityName);
+            this.getWeather(this.props.match.params.cityName);
         }
     },
     onClick: function (weather) {
-        this.context.router.transitionTo({
-            pathname: '/detail/' + this.props.params.cityName,
+        this.context.router.history.push({
+            pathname: '/detail/' + this.props.match.params.cityName,
             state: {
                 weather: weather
             }
@@ -46,7 +46,7 @@ var ForecastContainer = React.createClass({
     },
     render: function () {
         return (
-            this.state.isLoading ? <Loading /> : <Forecast cityName={this.props.params.cityName} forecast={this.state.forecast}
+            this.state.isLoading ? <Loading /> : <Forecast cityName={this.props.match.params.cityName} forecast={this.state.forecast}
                 handleClick={this.onClick} />
         )
     }

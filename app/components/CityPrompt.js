@@ -11,7 +11,7 @@ function NavPrompt(props) {
                         id="cityInput"
                         value={props.cityName}
                         onChange={props.onUpdateCity}
-                        />
+                    />
                 </div>
                 <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor="cityInput">
                     <i className="material-icons">search</i>
@@ -28,9 +28,10 @@ function FormPrompt(props) {
                 <input type="text"
                     className="mdl-textfield__input"
                     id="cityInput"
+                    autoFocus
                     value={props.cityName}
                     onChange={props.onUpdateCity}
-                    />
+                />
                 <label className="mdl-textfield__label">Enter a City</label>
             </div>
             <button className="mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect roboto"

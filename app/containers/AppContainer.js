@@ -1,13 +1,13 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-var MemoryRouter = ReactRouter.MemoryRouter;
-var Match = ReactRouter.Match;
-var Miss = ReactRouter.Miss;
-var Home = require('../components/Home');
-var Header = require('../components/Header');
-var NoMatch = require('../components/NoMatch');
-var ForecastContainer = require('../containers/ForecastContainer');
-var DetailContainer = require('../containers/DetailContainer');
+var React = require("react");
+var Router = require("react-router-dom");
+var MemoryRouter = Router.MemoryRouter;
+var Route = Router.Route;
+var Switch = Router.Switch;
+var Home = require("../components/Home");
+var Header = require("../components/Header");
+var NoMatch = require("../components/NoMatch");
+var ForecastContainer = require("../containers/ForecastContainer");
+var DetailContainer = require("../containers/DetailContainer");
 
 function AppContainer() {
     return (
@@ -15,10 +15,12 @@ function AppContainer() {
             <div className="mdl-layout mdl-js-layout">
                 <Header />
                 <main className="mdl-layout__content fullView">
-                    <Match exactly pattern="/" component={Home} />
-                    <Match exactly pattern="/forecast/:cityName" component={ForecastContainer} />
-                    <Match exactly pattern="/detail/:cityName" component={DetailContainer} />
-                    <Miss component={NoMatch} />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/forecast/:cityName" component={ForecastContainer} />
+                        <Route path="/detail/:cityName" component={DetailContainer} />
+                        <Route component={NoMatch} />
+                    </Switch>
                 </main>
             </div>
         </MemoryRouter>
