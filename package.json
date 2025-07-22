@@ -18,7 +18,7 @@
   "author": "raghu <raghu.9208@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.15.2",
+    "axios": "^0.30.0",
     "if-env": "^1.0.0",
     "json-loader": "^0.5.4",
     "react": "^15.3.2",
